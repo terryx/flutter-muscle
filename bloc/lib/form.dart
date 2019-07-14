@@ -25,6 +25,7 @@ class Form extends StatelessWidget {
           return TextField(
             autocorrect: false,
             onChanged: bloc.changeEmail,
+            keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
                 labelText: 'Email',
                 hintText: 'e.g abc@gmail.com',

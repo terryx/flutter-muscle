@@ -1,30 +1,22 @@
-import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 
 class FormBloc {
   final _email = BehaviorSubject<String>();
 
-  Function(String) get changeEmail => _email.sink.add;
-  
-  Observable<String> get email => _email.stream.map(
-        (value) {
-          print(value);
-          return value;
-        },
-      ).transform(
-        StreamTransformer<String, String>.fromHandlers(
-            handleData: (email, sink) {
-          if (email.length < 4) {
-            return sink.addError('Email length too short');
-          }
+  void changeEmail(String value) {
+    if (value.length < 4) {
+      _email.sink.addError('Email length too short');
+    } else if (!value.contains('@')) {
+      _email.sink.addError('Invalid email address');
+    } else {
+      _email.sink.add(value);
+    }
+    
+    // Subject has record of current value
+    print(_email.stream.value);
+  }
 
-          if (!email.contains('@')) {
-            return sink.addError('Invalid email address');
-          }
-
-          sink.add(email);
-        }),
-      );
+  Observable<String> get email => _email.stream;
 
   dispose() {
     _email.close();
