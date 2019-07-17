@@ -12,9 +12,8 @@ class ProfileListView extends StatelessWidget {
     return ListView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: profiles.length,
-      itemBuilder: (context, i) => ChangeNotifierProvider(
-        builder: (c) => profiles[i],
-        child: ProfileListItem(),
+      itemBuilder: (context, i) => Consumer<Profiles>(
+        builder: (context, value, _) => ProfileListItem(value.profiles[i]),
       ),
     );
   }

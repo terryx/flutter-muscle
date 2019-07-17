@@ -5,9 +5,11 @@ import '../providers/profile.dart';
 import '../screens/profile_detail.dart';
 
 class ProfileListItem extends StatelessWidget {
+  final Profile profile;
+  ProfileListItem(this.profile);
+  
   @override
   Widget build(BuildContext context) {
-    final profile = Provider.of<Profile>(context);
     return ListTile(
       title: Text(profile.name),
       subtitle: Text(profile.description),
