@@ -18,8 +18,8 @@ class Repo {
   Repo.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         name = json['name'],
-        htmlURL = json['htmlURL'],
+        htmlURL = json['html_url'],
         description = json['description'],
-        createdAt = json['createdAt'],
-        updatedAt = json['updatedAt'];
+        createdAt = json['created_at'],
+        updatedAt = json['updated_at'];
 }

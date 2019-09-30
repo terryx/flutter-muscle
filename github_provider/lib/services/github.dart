@@ -10,13 +10,12 @@ class GithubAPI {
   @visibleForTesting
   http.Client client = http.Client();
 
-  Future<http.Response> repos() async {
+  Future<List<Repo>> repos() async {
     const githubRepoUrl = _baseUrl + '/users/terryx/repos';
     final response = await client.get(githubRepoUrl);
-    final Map<String, dynamic> body = json.decode(response.body);
+    final List<dynamic> jsons = json.decode(response.body);
+    final result = jsons.map((json) => Repo.fromJson(json)).toList();
 
-    print(body);
-
-    return response;
+    return result;
   }
 }
