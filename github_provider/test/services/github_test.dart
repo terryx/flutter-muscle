@@ -4,10 +4,13 @@ import 'package:http/testing.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:github_provider/services/github.dart';
 
+import '../utils/test_path.dart';
+
 void main() {
   test('Github user repo', () async {
     final mockClient = MockClient((http.Request request) async {
-      final String data = await File('test/services/repos.json').readAsString();
+      final String data =
+          await File(testPath('services/repos.json')).readAsString();
       return http.Response(data, 200);
     });
 
