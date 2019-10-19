@@ -1,3 +1,4 @@
+import '../models/animal/cheetah.dart';
 import '../models/runner.dart';
 
 class RacingTrack {
@@ -6,6 +7,10 @@ class RacingTrack {
 
     for (var participant in participants) {
       shoutout.add(participant.run());
+
+      if (participant is Cheetah) {
+        print('Cheetah is spotted !');
+      }
     }
 
     return shoutout;
