@@ -14,7 +14,7 @@ void main() {
       );
 
       // Verify that Align start at left
-      final Finder pricingText = find.byType(Align).last;
+      final Finder pricingText = find.byType(Align).first;
       final Offset text = tester.getTopLeft(pricingText);
       expect(text.dx, 0.0);
 
