@@ -2,9 +2,10 @@ import '../runner.dart';
 import 'animal.dart';
 
 class Cheetah extends Animal implements Runner {
-  Cheetah() {
-    leg = 4;
-  }
+  Cheetah();
+
+  @override
+  final int leg = 4;
 
   @override
   String run() {
