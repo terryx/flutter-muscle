@@ -7,6 +7,9 @@ import 'package:todo/screens/todo_home.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  /// Expose initial route for deep link
+  String get initialRoute => TodoHome.routeName;
+
   /// Expose providers for dependency injection
   List<SingleChildCloneableWidget> get providers => <SingleChildCloneableWidget>[
         ChangeNotifierProvider<TodoRepository>(
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: TodoHome.routeName,
+        initialRoute: initialRoute,
         routes: <String, Widget Function(BuildContext)>{
           TodoHome.routeName: (_) => TodoHome(),
           TodoForm.routeName: (_) => TodoForm(),
